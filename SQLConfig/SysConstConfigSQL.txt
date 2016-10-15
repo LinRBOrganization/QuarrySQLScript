@@ -1,0 +1,25 @@
+﻿delete dbo.DbSystemConst where FieldName='UserType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UserType',0,'地磅文员') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UserType',1,'办公室文员') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UserType',2,'超级管理员') 
+
+delete dbo.DbSystemConst where FieldName='UserSex'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UserSex',0,'男') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UserSex',1,'女')
+
+delete dbo.DbSystemConst where FieldName='PermissionType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('PermissionType',0,'操作') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('PermissionType',1,'查询')
+
+delete dbo.DbSystemConst where FieldName='BackUpType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpType',0,'每周备份一次') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpType',1,'每天备份一次')
+
+delete dbo.DbSystemConst where FieldName='BackUpWeek'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',1,'一') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',2,'二')
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',3,'三') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',4,'四')
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',5,'五') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',6,'六')
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',7,'日') 

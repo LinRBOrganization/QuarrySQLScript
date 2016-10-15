@@ -1,0 +1,9 @@
+﻿alter view dbo.Db_v_UserPermissionData
+as
+select d.UserPermissionDataID, d.UserID, d.PermissionDataID, d.ChangedBy, d.ChangeTime,
+	p.PermissionID, p.PermissionCode, p.PermissionDataName,isnull(d.HasPermission,0) as HasPermission,s.PermissionName
+from dbo.DbPermissionData p
+	inner join dbo.DbPermission s on
+		s.PermissionID = p.PermissionID
+	left outer join dbo.DbUserPermissionData d on
+		p.PermissionDataID = d.PermissionDataID

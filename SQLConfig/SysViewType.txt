@@ -1,0 +1,55 @@
+﻿
+if not exists(select 1 from SysViewType where SysViewType='100')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName ) values('100','DBUser') 
+end
+go
+if not exists(select 1 from SysViewType where SysViewType='101')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('101','DbSystemConst') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='102')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('102','Db_v_UserPermissionData') 
+end
+else
+begin
+	update dbo.SysViewType set SysViewName= 'Db_v_UserPermissionData' where SysViewType = '102'
+end
+go
+if not exists(select 1 from SysViewType where SysViewType='103')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('103','DbPermission') 
+end
+go
+if not exists(select 1 from SysViewType where SysViewType='104')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('104','DbPermissionData') 
+end
+go
+
+delete dbo.SysViewType where SysViewType='105'
+if not exists(select 1 from SysViewType where SysViewType='105')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('105','Db_v_ReportTemplate') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='106')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('106','SbSysLog') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='107')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('107','DbUserPermission') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='108')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('108','DbBackUpConfig') 
+end
