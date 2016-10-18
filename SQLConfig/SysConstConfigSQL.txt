@@ -23,3 +23,8 @@ insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',5,'五') 
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',6,'六')
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',7,'日') 
+
+delete dbo.DbSystemConst where FieldName='UOMType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',0,'体积') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',1,'重量') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',2,'数量')
