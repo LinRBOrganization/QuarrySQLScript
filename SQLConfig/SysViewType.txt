@@ -53,3 +53,15 @@ if not exists(select 1 from SysViewType where SysViewType='108')
 begin
 	insert dbo.SysViewType( SysViewType, SysViewName) values('108','DbBackUpConfig') 
 end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='109')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('109','RPReceiveBillHeader') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='110')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('110','DbCustomer') 
+end

@@ -340,6 +340,67 @@ CREATE TABLE [dbo].[DbBackUpLog](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 end
+
+go
+
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DbCustomer]') AND type in (N'U'))
+begin
+	CREATE TABLE [dbo].[DbCustomer](
+		[CustomerID] [bigint] IDENTITY(1,1) NOT NULL,
+		[CustomerName] [varchar](100) NOT NULL,
+		[Contact] [varchar](100) NULL,
+		[Phone] [varchar](100) NULL,
+		[Address] [varchar](100) NULL,
+		[CarIsLimit] [tinyint] NOT NULL,
+		[AmountType] [tinyint] NOT NULL,
+		[LicenceNum] [varchar](100) NULL,
+		[Description] [varchar](100) NULL,
+		[IsForbid] [tinyint] NOT NULL,
+		[ReceiveType] [tinyint] NOT NULL,
+		[CreditAmount] [numeric](18, 2) NULL,
+		[IsDisplayPrice] [tinyint] NOT NULL,
+		[IsDisplayAmount] [tinyint] NOT NULL,
+		[IsPrintAmount] [tinyint] NOT NULL,
+		[IsAllowOverFul] [tinyint] NOT NULL,
+		[CreateBy] [varchar](100) NOT NULL,
+		[CreateTime] [smalldatetime] NOT NULL,
+		[ChangeBy] [varchar](100) NOT NULL,
+		[ChangeTime] [smalldatetime] NOT NULL,
+	 CONSTRAINT [PK_DbCustomer] PRIMARY KEY CLUSTERED 
+	(
+		[CustomerID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+end
+go
+
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RPReceiveBillHeader]') AND type in (N'U'))
+begin
+	
+	CREATE TABLE [dbo].[RPReceiveBillHeader](
+		[ReceiveBillHeaderID] [bigint] IDENTITY(1,1) NOT NULL,
+		[ReceiveBillCode] [varchar](100) NOT NULL,
+		[BillDate] [smalldatetime] NOT NULL,
+		[CustomerID] [bigint] NOT NULL,
+		[ReceiveAmount] [numeric](18, 2) NOT NULL,
+		[Description] [varchar](100) NULL,
+		[IsApprove] [tinyint] NOT NULL,
+		[IsCancel] [tinyint] NOT NULL,
+		[CreatedBy] [varchar](100) NOT NULL,
+		[CreateTime] [smalldatetime] NOT NULL,
+		[ChangedBy] [varchar](100) NOT NULL,
+		[ChangeTime] [smalldatetime] NOT NULL,
+		[ApproveBy] [varchar](100) NULL,
+		[ApproveTime] [smalldatetime] NULL,
+		[CancelBy] [varchar](100) NULL,
+		[CancelTime] [smalldatetime] NULL,
+	 CONSTRAINT [PK_RPReceiveBillHeader] PRIMARY KEY CLUSTERED 
+	(
+		[ReceiveBillHeaderID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+
+end
 go
 
 --添加默认管理员权限
