@@ -403,6 +403,95 @@ begin
 end
 go
 
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DbCar]') AND type in (N'U'))
+begin
+	CREATE TABLE [dbo].[DbCar](
+		[CarID] [bigint] IDENTITY(1,1) NOT NULL,
+		[CustomerID] [bigint] NOT NULL,
+		[CarNum] [varchar](100) NOT NULL,
+		[CreateBy] [varchar](100) NOT NULL,
+		[CreateTime] [smalldatetime] NOT NULL,
+		[ChangeBy] [varchar](100) NOT NULL,
+		[ChangeTime] [smalldatetime] NOT NULL,
+	 CONSTRAINT [PK_DbCar] PRIMARY KEY CLUSTERED 
+	(
+		[CarID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+
+	ALTER TABLE [dbo].[DbCar]  WITH CHECK ADD  CONSTRAINT [FK_DbCar_DbCustomer] FOREIGN KEY([CustomerID])
+	REFERENCES [dbo].[DbCustomer] ([CustomerID])
+
+	ALTER TABLE [dbo].[DbCar] CHECK CONSTRAINT [FK_DbCar_DbCustomer]
+end
+
+GO
+
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DbItemType]') AND type in (N'U'))
+begin
+	CREATE TABLE [dbo].[DbItemType](
+		[ItemTypeID] [bigint] IDENTITY(1,1) NOT NULL,
+		[ItemTypeName] [varchar](100) NOT NULL,
+		[ChangeBy] [varchar](100) NOT NULL,
+		[ChangeTime] [smalldatetime] NOT NULL,
+	 CONSTRAINT [PK_DbItemType] PRIMARY KEY CLUSTERED 
+	(
+		[ItemTypeID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+end
+
+go
+
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DbUOM]') AND type in (N'U'))
+begin
+	CREATE TABLE [dbo].[DbUOM](
+	[UOMID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UOMName] [varchar](100) NOT NULL,
+	[UOMType] [tinyint] NOT NULL,
+	 CONSTRAINT [PK_DbUOM] PRIMARY KEY CLUSTERED 
+	(
+		[UOMID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+end
+
+go
+
+IF not  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[DbItemBase]') AND type in (N'U'))
+begin
+	
+	CREATE TABLE [dbo].[DbItemBase](
+		[ItemID] [bigint] IDENTITY(1,1) NOT NULL,
+		[ItemTypeID] [bigint] NOT NULL,
+		[ItemCode] [varchar](100) NOT NULL,
+		[ItemName] [varchar](100) NOT NULL,
+		[ItemMode] [varchar](100) NULL,
+		[ItemRate] [numeric](18, 2) NULL,
+		[UOMID] [bigint] NOT NULL,
+		[Description] [varchar](100) NULL,
+		[IsForbid] [tinyint] NOT NULL,
+		[ChangeBy] [varchar](100) NOT NULL,
+		[ChangeTime] [smalldatetime] NOT NULL,
+	 CONSTRAINT [PK_DbItemBase] PRIMARY KEY CLUSTERED 
+	(
+		[ItemID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	) ON [PRIMARY]
+
+	ALTER TABLE [dbo].[DbItemBase]  WITH CHECK ADD  CONSTRAINT [FK_DbItemBase_DbItemType] FOREIGN KEY([ItemTypeID])
+	REFERENCES [dbo].[DbItemType] ([ItemTypeID])
+
+	ALTER TABLE [dbo].[DbItemBase] CHECK CONSTRAINT [FK_DbItemBase_DbItemType]
+
+	ALTER TABLE [dbo].[DbItemBase]  WITH CHECK ADD  CONSTRAINT [FK_DbItemBase_DbUOM] FOREIGN KEY([UOMID])
+	REFERENCES [dbo].[DbUOM] ([UOMID])
+
+	ALTER TABLE [dbo].[DbItemBase] CHECK CONSTRAINT [FK_DbItemBase_DbUOM]
+end
+
+go
+
 --添加默认管理员权限
 
 if not exists(

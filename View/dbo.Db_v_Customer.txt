@@ -1,0 +1,8 @@
+﻿alter view dbo.Db_v_User
+as
+select UserID, LoginName, UserPassword, ForbidLogin, IsManager, 
+	ChangeBy, ChangeTime, 
+	(select ConstText from dbo.DbSystemConst where FieldName='UserType' and ConstValue=UserType) as UserTypeName,
+	(select ConstText from dbo.DbSystemConst where FieldName='UserSex' and ConstValue=UserSex) as UserSexName,
+	UserType, UserName, UserSex
+from dbo.DBUser

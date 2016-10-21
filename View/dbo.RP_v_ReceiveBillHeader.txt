@@ -1,0 +1,8 @@
+﻿create view dbo.RP_v_ReceiveBillHeader
+as
+select h.ReceiveBillHeaderID, h.ReceiveBillCode, h.BillDate, h.CustomerID, h.ReceiveAmount, h.Description, h.IsApprove, h.IsCancel, 
+	h.CreatedBy, h.CreateTime, h.ChangedBy, h.ChangeTime, h.ApproveBy, h.ApproveTime, h.CancelBy, h.CancelTime,
+	c.CustomerName,c.AmountType,c.ReceiveType
+from dbo.RPReceiveBillHeader h
+	inner join dbo.DbCustomer c on
+		c.CustomerID = h.CustomerID

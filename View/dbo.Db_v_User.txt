@@ -1,0 +1,10 @@
+﻿create view dbo.Db_v_Customer
+as
+select CustomerID, CustomerName, Contact, Phone, Address, CarIsLimit, AmountType, LicenceNum, 
+	Description, IsForbid, 
+	ReceiveType, 
+	(select ConstText from dbo.DbSystemConst where FieldName='ReceiveType' and ConstValue=ReceiveType) as ReceiveTypeName,
+	(select ConstText from dbo.DbSystemConst where FieldName='AmountType' and ConstValue=AmountType) as AmountTypeName,
+	CreditAmount, IsDisplayPrice, 
+	IsDisplayAmount, IsPrintAmount, IsAllowOverFul, CreateBy, CreateTime, ChangeBy, ChangeTime
+from dbo.DbCustomer

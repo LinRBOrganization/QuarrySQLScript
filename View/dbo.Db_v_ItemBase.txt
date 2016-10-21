@@ -1,0 +1,9 @@
+﻿create view dbo.Db_v_ItemBase
+as
+select i.ItemID, i.ItemTypeID, t.ItemTypeName, i.ItemCode, i.ItemName, 
+	i.ItemMode, i.ItemRate, i.UOMID,u.UOMName,u.UOMType, i.Description, i.IsForbid, i.ChangeBy, i.ChangeTime
+from dbo.DbItemBase i
+	left outer join dbo.DbItemType t on
+		t.ItemTypeID = i.ItemTypeID
+	left outer join dbo.DbUOM u on
+		u.UOMID = i.UOMID

@@ -1,7 +1,7 @@
-﻿
+﻿delete dbo.SysViewType where SysViewType='100'
 if not exists(select 1 from SysViewType where SysViewType='100')
 begin
-	insert dbo.SysViewType( SysViewType, SysViewName ) values('100','DBUser') 
+	insert dbo.SysViewType( SysViewType, SysViewName ) values('100','DB_v_User') 
 end
 go
 if not exists(select 1 from SysViewType where SysViewType='101')
@@ -64,4 +64,28 @@ go
 if not exists(select 1 from SysViewType where SysViewType='110')
 begin
 	insert dbo.SysViewType( SysViewType, SysViewName) values('110','DbCustomer') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='111')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('111','RP_v_ReceiveBillHeader') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='112')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('112','Db_v_Customer') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='113')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('113','DbCar') 
+end
+go
+
+if not exists(select 1 from SysViewType where SysViewType='203')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('203','Db_v_ItemBase') 
 end

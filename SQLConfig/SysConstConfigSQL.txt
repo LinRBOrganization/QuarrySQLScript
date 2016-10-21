@@ -23,3 +23,13 @@ insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',5,'五') 
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',6,'六')
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',7,'日') 
+
+delete dbo.DbSystemConst where FieldName='AmountType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('AmountType',0,'整数') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('AmountType',1,'保留一位小数')
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('AmountType',2,'保留两位小数') 
+
+delete dbo.DbSystemConst where FieldName='ReceiveType'
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('ReceiveType',0,'现金')
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('ReceiveType',1,'预付') 
+insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('ReceiveType',2,'挂账') 
