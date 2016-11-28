@@ -47,6 +47,7 @@
     <Content Include="SQLConfig\SysSPType.txt" />
     <Content Include="SQLConfig\SysViewType.txt" />
     <Content Include="View\dbo.Db_v_ItemBase.txt" />
+    <Content Include="View\dbo.Db_v_UOM.txt" />
     <Content Include="View\dbo.RP_v_ReceiveBillHeader.txt" />
     <Content Include="View\dbo.Db_v_User.txt" />
     <Content Include="View\dbo.Db_v_Customer.txt" />

@@ -1,0 +1,5 @@
+﻿create view dbo.Db_v_UOM
+as
+select UOMID, UOMName, UOMType, 
+	(select ConstText from dbo.DbSystemConst where FieldName='UOMType' and ConstValue=UOMType) as UOMTypeName
+from dbo.DbUOM

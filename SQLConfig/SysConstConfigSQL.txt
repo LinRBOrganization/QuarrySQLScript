@@ -28,7 +28,6 @@ delete dbo.DbSystemConst where FieldName='UOMType'
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',0,'体积') 
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',1,'重量') 
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('UOMType',2,'数量')
-insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('BackUpWeek',7,'日') 
 
 delete dbo.DbSystemConst where FieldName='AmountType'
 insert dbo.DbSystemConst( FieldName, ConstValue, ConstText) values('AmountType',0,'整数') 

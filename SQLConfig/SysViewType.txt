@@ -85,6 +85,11 @@ begin
 end
 go
 
+if not exists(select 1 from SysViewType where SysViewType='202')
+begin
+	insert dbo.SysViewType( SysViewType, SysViewName) values('202','Db_v_UOM') 
+end
+
 if not exists(select 1 from SysViewType where SysViewType='203')
 begin
 	insert dbo.SysViewType( SysViewType, SysViewName) values('203','Db_v_ItemBase') 
